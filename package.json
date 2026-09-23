@@ -1,0 +1,16 @@
+{
+  "name": "climapulse",
+  "version": "1.0.0",
+  "description": "Hyper-Local Climate Intelligence Platform — static frontend with deterministic simulated data, CI-tested.",
+  "type": "module",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test",
+    "test:watch": "node --test --watch"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
