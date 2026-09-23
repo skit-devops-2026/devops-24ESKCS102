@@ -104,3 +104,22 @@ test("README.md is filled in and not a template stub", () => {
   assert.ok(readme.trim().length > 1000);
   assert.ok(!/lorem ipsum/i.test(readme));
 });
+
+test("k8s manifests are internally consistent, monitoring dashboard is valid JSON", () => {
+  const dep = fs.readFileSync(path.join(ROOT, "k8s/deployment.yaml"), "utf-8");
+  const svc = fs.readFileSync(path.join(ROOT, "k8s/service.yaml"), "utf-8");
+  assert.match(dep, /apiVersion: apps\/v1/);
+  assert.match(dep, /kind: Deployment/);
+  assert.match(svc, /kind: Service/);
+  assert.match(dep, /containerPort: 8080/);
+  assert.match(svc, /targetPort: 8080/);
+  assert.ok(dep.includes("app: climapulse"));
+  assert.ok(svc.includes("app: climapulse"));
+  assert.match(dep, /image: ghcr\.io\//);
+  assert.match(dep, /path: \/metrics/);
+  const dashboard = JSON.parse(
+    fs.readFileSync(path.join(ROOT, "monitoring/dashboard.json"), "utf-8")
+  );
+  assert.equal(dashboard.title, "ClimaPulse");
+  assert.ok(dashboard.panels.length >= 2);
+});
