@@ -6,9 +6,19 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Install') {
+            steps {
+                bat 'npm ci'
+            }
+        }
+        stage('Test') {
+            steps {
+                bat 'npm test'
+            }
+        }
         stage('Validate HTML') {
             steps {
-                bat 'npm install html-validate'
+                bat 'npm install --no-save html-validate'
                 bat 'npx html-validate "**/*.html"'
             }
         }
