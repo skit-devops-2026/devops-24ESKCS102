@@ -25,17 +25,81 @@ ClimaPulse is a complete, production-quality frontend web application for climat
 
 ## 🚀 Getting Started
 
-You can open `index.html` directly, or run a simple local server:
+You can open `index.html` directly, or run the project's own server:
 
 ```bash
-# Python
-python -m http.server 5500
-
-# Node (alternative)
-npx serve .
+npm ci
+npm start
 ```
 
-Then visit `http://localhost:5500`.
+Then visit `http://localhost:8080`. Metrics are exposed at
+`http://localhost:8080/metrics` in Prometheus format.
+
+```bash
+# Python (alternative)
+python -m http.server 5500
+```
+
+---
+
+## ☁️ Live URL
+
+> Set after deployment (M6). GitHub Pages is the default target — see
+> [`docs/deployment.md`](docs/deployment.md).
+
+```text
+https://skit-devops-2026.github.io/Devops_24ESKCS102/
+```
+
+Health check every deployed copy with: `curl -i https://<url>/metrics`
+
+---
+
+## ✅ CI / CD
+
+| Asset | Purpose |
+| --- | --- |
+| `.github/workflows/ci.yml` | Runs `npm ci`, the test suite (`npm test`) and HTML validation on every push/PR |
+| `.github/workflows/deploy.yml` | Publishes the site to GitHub Pages (`workflow_dispatch` or push to `main`) |
+| `Jenkinsfile` | Local Jenkins pipeline: install → test → validate HTML → build |
+| `test/` | Node `node:test` suite (53 checks) covering RNG, mock data, services, server & repo hygiene |
+
+```bash
+npm test          # run the suite locally
+npx html-validate "**/*.html"
+```
+
+The CI history is the proof: every push to `main` produces a run, and the
+latest run is green with the full suite passing.
+
+---
+
+## 🐳 Containerization & Orchestration
+
+| Asset | Purpose |
+| --- | --- |
+| `Dockerfile` | Multi-stage `node:20-alpine` image → serves the static site on `:8080` |
+| `docker-compose.yml` | Brings up app + Prometheus + Grafana together |
+| `k8s/deployment.yaml` | 2-replica Deployment with probes and resource limits |
+| `k8s/service.yaml` | ClusterIP Service (port 80 → 8080) |
+
+```bash
+docker build -t climapulse:latest .
+docker compose up -d      # app :8080 · prometheus :9090 · grafana :3000
+kind create cluster && kubectl apply -f k8s/
+```
+
+See [`k8s/README.md`](k8s/README.md) and [`monitoring/README.md`](monitoring/README.md).
+
+---
+
+## 📈 Monitoring
+
+State is exported from the app itself at `/metrics` (uptime, request counts,
+per-path rates, health). Prometheus scrapes it (`monitoring/prometheus.yml`)
+and the Grafana dashboard (`monitoring/dashboard.json`) is auto-provisioned
+with panels for service health, request rate and uptime. Deployment evidence
+lives in [`docs/`](docs/).
 
 ---
 
@@ -75,7 +139,13 @@ ClimaPulse/
 │   ├── government/         Government page
 │   ├── industrial/         Industrial page
 │   └── advisors/           AI chat interfaces
-├── assets/                 Images / icons (optional)
+├── test/                   Node test suite (node:test)
+├── server.js               Static server + /metrics endpoint
+├── Dockerfile              Container image (M5)
+├── docker-compose.yml      App + Prometheus + Grafana (M5/M6)
+├── monitoring/             Prometheus config + Grafana dashboard (M6)
+├── k8s/                    Deployment + Service manifests (M7)
+├── docs/                   Deployment evidence & screenshots (M6/M7)
 └── README.md
 ```
 
