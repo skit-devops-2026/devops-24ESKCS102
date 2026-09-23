@@ -1,0 +1,12 @@
+node_modules
+.git
+.github
+docs
+k8s
+monitoring
+test
+dist
+build
+*.log
+.DS_Store
+Thumbs.db
