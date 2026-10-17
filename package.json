@@ -8,9 +8,13 @@
   "scripts": {
     "start": "node server.js",
     "test": "node --test",
-    "test:watch": "node --test --watch"
+    "test:watch": "node --test --watch",
+    "validate:html": "html-validate \"**/*.html\""
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "html-validate": "^11.16.2"
   }
 }

@@ -62,7 +62,7 @@ Health check every deployed copy with: `curl -i https://<url>/metrics`
 | `.github/workflows/ci.yml` | Runs `npm ci`, the test suite (`npm test`) and HTML validation on every push/PR |
 | `.github/workflows/deploy.yml` | Publishes the site to GitHub Pages (`workflow_dispatch` or push to `main`) |
 | `Jenkinsfile` | Local Jenkins pipeline: install → test → validate HTML → build |
-| `test/` | Node `node:test` suite (53 checks) covering RNG, mock data, services, server & repo hygiene |
+| `test/` | Node `node:test` suite (54 checks) covering RNG, mock data, services, server & repo hygiene |
 
 ```bash
 npm test          # run the suite locally

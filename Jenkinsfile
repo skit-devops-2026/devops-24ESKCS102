@@ -18,8 +18,7 @@ pipeline {
         }
         stage('Validate HTML') {
             steps {
-                bat 'npm install --no-save html-validate'
-                bat 'npx html-validate "**/*.html"'
+                bat 'npm run validate:html'
             }
         }
         stage('Build') {

@@ -25,4 +25,4 @@ jobs:
         run: npm test
 
       - name: Validate HTML
-        run: npx --yes html-validate "**/*.html"
+        run: npm run validate:html
