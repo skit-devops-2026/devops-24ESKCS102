@@ -1,5 +1,7 @@
 # 🌍 Climate_Pulse
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/94472472-c79d-4173-9aa5-0a6ed150d784/deploy-status)](https://app.netlify.com/projects/funny-cucurucho-fb3ff1/deploys)
+
 ## Hyper-Local Climate Intelligence Platform
 
 ClimaPulse is a complete, production-quality frontend web application for climate, air quality, gas, soil, water, government, and industrial environmental intelligence. It is built with **HTML5, CSS3, Vanilla JavaScript, and Tailwind CSS**, with **Chart.js**, **Lucide-style SVG icons**, and **Marked.js** used only where needed.
