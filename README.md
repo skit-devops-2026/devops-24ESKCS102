@@ -44,8 +44,11 @@ python -m http.server 5500
 
 ## ☁️ Live URL
 
-> Deployed on **Netlify** (M6). See [`docs/deployment.md`](docs/deployment.md)
-> for the GitHub Pages and container options.
+Live URL: https://funny-cucurucho-fb3ff1.netlify.app/
+
+> Deployed on **Netlify** (M6), so the site is served as static files.
+> See [`docs/deployment.md`](docs/deployment.md) for the container / GitHub
+> Pages options that expose the live `server.js` `/metrics` endpoint.
 
 ```text
 https://funny-cucurucho-fb3ff1.netlify.app/

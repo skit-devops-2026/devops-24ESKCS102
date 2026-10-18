@@ -1,0 +1,12 @@
+# HELP climapulse_up Whether the ClimaPulse service is up.
+# TYPE climapulse_up gauge
+climapulse_up 1
+# HELP climapulse_uptime_seconds Application uptime in seconds (static snapshot for the Netlify static host).
+# TYPE climapulse_uptime_seconds counter
+climapulse_uptime_seconds 0
+# HELP climapulse_http_requests_total Total number of HTTP requests served (static snapshot).
+# TYPE climapulse_http_requests_total counter
+climapulse_http_requests_total 0
+# HELP climapulse_host Host that produced this exposition.
+# TYPE climapulse_host gauge
+climapulse_host 1
