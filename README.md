@@ -44,14 +44,14 @@ python -m http.server 5500
 
 ## ☁️ Live URL
 
-> Set after deployment (M6). GitHub Pages is the default target — see
-> [`docs/deployment.md`](docs/deployment.md).
+> Deployed on **Netlify** (M6). See [`docs/deployment.md`](docs/deployment.md)
+> for the GitHub Pages and container options.
 
 ```text
-https://skit-devops-2026.github.io/Devops_24ESKCS102/
+https://funny-cucurucho-fb3ff1.netlify.app/
 ```
 
-Health check every deployed copy with: `curl -i https://<url>/metrics`
+Health check every deployed copy with: `curl -i https://funny-cucurucho-fb3ff1.netlify.app/metrics`
 
 ---
 
