@@ -6,6 +6,9 @@
   "private": true,
   "main": "server.js",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "start": "node server.js",
     "test": "node --test",
     "test:watch": "node --test --watch",
@@ -15,6 +18,47 @@
     "node": ">=20"
   },
   "devDependencies": {
-    "html-validate": "^10.17.0"
-  }
+    "@vitejs/plugin-react": "^6.1.2",
+    "html-validate": "^10.17.0",
+    "vite": "^8.3.5"
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "balanced-match": "^4.0.4",
+    "brace-expansion": "^5.0.12",
+    "chart.js": "^4.6.1",
+    "fast-deep-equal": "^3.1.3",
+    "fast-uri": "^3.1.8",
+    "glob": "^13.0.6",
+    "json-schema-traverse": "^1.0.0",
+    "kleur": "^4.1.5",
+    "lru-cache": "^11.5.3",
+    "lucide-react": "^1.62.0",
+    "minimatch": "^10.2.6",
+    "minimist": "^1.2.8",
+    "minipass": "^7.1.3",
+    "path-scurry": "^2.0.2",
+    "prompts": "^2.4.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.4",
+    "require-from-string": "^2.0.2",
+    "semver": "^7.8.5",
+    "sisteransi": "^1.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skit-devops-2026/devops-24ESKCS102.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skit-devops-2026/devops-24ESKCS102/issues"
+  },
+  "homepage": "https://github.com/skit-devops-2026/devops-24ESKCS102#readme"
 }
